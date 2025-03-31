@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcrj8jckmjeni"]
+
+[ext_resource type="Texture2D" uid="uid://cdio1fkxmi5sr" path="res://assets/Cytokine.webp" id="1_7po68"]
+[ext_resource type="Script" uid="uid://dndm0dns5m3fc" path="res://scripts/cytokine.gd" id="1_y1ktu"]
+[ext_resource type="Texture2D" uid="uid://dlhghasf8vobj" path="res://assets/Cytokine_clign.webp" id="2_y1ktu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y1ktu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7po68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y1ktu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7po68")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"warning",
+"speed": 2.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jepv6"]
+radius = 5.0
+height = 14.0
+
+[node name="Cytokine" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_y1ktu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_y1ktu")
+animation = &"warning"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jepv6")
+
+[node name="WarningTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DepopTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="WarningTimer" to="." method="_on_warning_timer_timeout"]
+[connection signal="timeout" from="DepopTimer" to="." method="_on_depop_timer_timeout"]
