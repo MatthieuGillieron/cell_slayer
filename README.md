@@ -15,7 +15,7 @@
 
 ## 🎮 Gameplay  
 
-🔹 **Esquive les ennemis** sans est tire leur dessus ! <br>
+🔹 **Esquive les ennemis** est tire leur dessus ! <br>
 🔹 **Survis le plus longtemps possible** pour battre ton record  <br>
 🔹 **Incarne une globule blanche et combat les cellules,** Attention celles-ci se *split* lorsqu'on les touche ! ⏳  
 
